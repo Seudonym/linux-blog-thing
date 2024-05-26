@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[theentirehistoryoflinuxiguess]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>theentirehistoryoflinuxiguess</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 26 May 2024 18:36:18 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 26 May 2024 18:36:16 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[ARP]]></title><description><![CDATA[ 
+ <br>Address Resolution Protocol (ARP) is used by IPv4 to find another device's hardware address on the same ethernet, given their <a data-tooltip-position="top" aria-label="computers/IP addresses" data-href="computers/IP addresses" href="computers/IP addresses" class="internal-link" target="_self" rel="noopener">IP address</a>. When using <a data-href="Ethernet" href="Ethernet" class="internal-link" target="_self" rel="noopener">Ethernet</a>, we require the destination hardware address and ARP finds out exactly that.<br>
+An ARP request contains the following data<br><br>The above payload is wrapped in an Ethernet frame and broadcasted to all devices. If a device with the target IP address exists, it sends back an ARP reply. BUT, in the ARP reply, the sender is the target device from the ARP request. So, once we receive an ARP reply, what we are interested in, is the HW address of sender, because our target device will have sent the ARP reply.]]></description><link>ARP.html</link><guid isPermaLink="false">ARP.md</guid><pubDate>Sat, 18 May 2024 18:27:29 GMT</pubDate></item><item><title><![CDATA[CIDR]]></title><description><![CDATA[ 
+ <br>Classless InterDomain Routing (CIDR) is used in <a data-tooltip-position="top" aria-label="computers/IP addresses > IPv4 > Subnetting" data-href="computers/IP addresses#IPv4#Subnetting" href="computers/IP addresses#IPv4#Subnetting" class="internal-link" target="_self" rel="noopener">subnetting</a>. When allocated a block of IPs with a subnet mask, CIDR allows for changing the subnet masks size to setup newer subnetworks. Basically, CIDR is a technique, and subnetting is the result.<br>Example<br>
+When given an IP address block a.b.c.d/16, we can create smaller subnets by taking more than 16bits as our mask. The given block has 16bits common as the network prefix, and with CIDR we can choose a mask of varying lenght, say 24, to create more subnets.]]></description><link>CIDR.html</link><guid isPermaLink="false">CIDR.md</guid><pubDate>Thu, 16 May 2024 18:36:03 GMT</pubDate></item><item><title><![CDATA[Daemon]]></title><description><![CDATA[ 
+ <br>A dameon is a background system process that waits till specific conditions are met. If these conditions are met, it performs some task. <br>Example<br>
+sshd is a system daemon that manages incoming ssh requests.]]></description><link>Daemon.html</link><guid isPermaLink="false">Daemon.md</guid><pubDate>Thu, 16 May 2024 18:36:03 GMT</pubDate></item><item><title><![CDATA[DHCP]]></title><description><![CDATA[ 
+ <br>Dynamic Host Configuration Protocol (DHCP) is used to dynamically manage and assign IP addresses to hosts on a network.<br>
+<br>When a new machine joins the nework, it sends out a DHCP request.
+<br>Assuming there is a DHCP server on the network, it responds with the IP configuration for the new machine.
+<br>This new IP address is reserved to prevent accidental assignment to other devices while still in use.
+<br>On servers, static DHCP reservations are used. Basically an IP is assigned to a new host joining the network, and is kept reserved for this host in case it joins back later. So essentially, we are reserving a dynamically assigned IP address for a particular host, making sure that this host will always get assigned that reserved IP address when it rejoins.]]></description><link>DHCP.html</link><guid isPermaLink="false">DHCP.md</guid><pubDate>Thu, 16 May 2024 18:36:03 GMT</pubDate></item><item><title><![CDATA[GPT]]></title><description><![CDATA[ 
+ <br>GUID Partition Table (GPT) was introduced with Intel's Extensible Firmware Interface (EFI). Nowadays, it is also called Unified Extensible Firmware Interface (UEFI) as it has been adopted by most vendors. EFI and UEFI can be used interchangably.<br>
+Unlike <a data-tooltip-position="top" aria-label="computers/MBR" data-href="computers/MBR" href="computers/MBR" class="internal-link" target="_self" rel="noopener">MBR</a> GPT defines only one kind of partition, no more logical partitions. And there can be an arbitrary number of them. Each partition is assigned a 16 Byte ID called a Globally Unique ID (GUID). <br><br>GPT is backwards compatible with MBR based systems. It does this by faking an MBR block at the beginning of the partition table. This fake MBR makes MBR based systems think that the disk is actually one large 2TB partition.]]></description><link>GPT.html</link><guid isPermaLink="false">GPT.md</guid><pubDate>Sun, 26 May 2024 16:52:46 GMT</pubDate></item><item><title><![CDATA[inode]]></title><description><![CDATA[ 
+ <br>An index node (inode) is a data structure that contains information about a file. It DOES NOT contain the actual file data itself but only the metadata and the pointer(s) to the data blocks that contain the actual file data. It is important to note that an inode DOES NOT contain the file name either. A <a data-tooltip-position="top" aria-label="computers/Linux > Filesystem > Directory" data-href="computers/Linux#Filesystem#Directory" href="computers/Linux#Filesystem#Directory" class="internal-link" target="_self" rel="noopener">directory</a> contains filename and inode mappings.<br>An inode table is created when the filesystem is created. Some filesystems allow for dynamically modifying the size of this table, but <a data-tooltip-position="top" aria-label="computers/Linux > Filesystem > Types of filesystems > ext4" data-href="computers/Linux#Filesystem#Types of filesystems#ext4" href="computers/Linux#Filesystem#Types of filesystems#ext4" class="internal-link" target="_self" rel="noopener">ext4</a> does not. Usually 1% of the total space is allocated for the inode table. Each table entry is an inode and also has fixed size.]]></description><link>inode.html</link><guid isPermaLink="false">inode.md</guid><pubDate>Sun, 26 May 2024 17:13:40 GMT</pubDate></item><item><title><![CDATA[IP addresses]]></title><description><![CDATA[ 
+ <br>Internet Protocol (IP) addresses contain a host part and a network part. They are used to identify a device on any network.<br><br>The IP address is 4B long and each byte is seperated with a . (period).<br><br>IPv4 addresses were classified into 5 classes based on the first byte as follows:<br><br><br>The host and network portions can be specified explicitly using a subnet mask or netmask. A net mask is writted as /xx at the end of an address.<br>
+Related: <a data-tooltip-position="top" aria-label="computers/CIDR" data-href="computers/CIDR" href="computers/CIDR" class="internal-link" target="_self" rel="noopener">CIDR</a><br>Example<br>
+Consider an IP address: 128.138.243.0/26. For this IP address, the network part is 26 bits long and the remaining 6 bits are used to identify the host.<br>
+As the host part can have 6 bits, there can be a total of  hosts on this network. 2 of them, the ones with host bits all 0 or all 1, are reserved for the network address and broadcast address respectively.<br>Our netmask here will be<br>
+1111 1111 . 1111 1111 . 1111 1111 . 1100 0000<br>
+As it is 26 bits, we also have 2 extra bits after the end of the 3rd byte. By modifying these two bits to have values 00, 01, 10, 11 we can split the network into 4 sub networks, each with 6 host bits:<br>
+128.138.243.0/26<br>
+128.138.243.64/26<br>
+128.138.243.128/26<br>
+128.138.243.192/26<br>
+The last byte will be a multiple of the number of hosts on each network, which in our case is 64.<br>Exception
+A /31 address does not have a broadcast and a network address. Both of its addresses are used for hosts.
+<br><br>IPv6 addresses are 128 bits or 16 bytes long. They are represented as 8 groups of 16 bits each, seperated by a :. These addresses do not have a netmask. The network and host parts are just left and right halves. In a way, its like it has a fixed netmask of 64.]]></description><link>IP addresses.html</link><guid isPermaLink="false">IP addresses.md</guid><pubDate>Thu, 16 May 2024 18:36:03 GMT</pubDate></item><item><title><![CDATA[Linux]]></title><description><![CDATA[ 
+ <br><br><br>A couple of engineers who initially working on an operating system called <a data-href="Multics" href="Multics.html" class="internal-link" target="_self" rel="noopener">Multics</a>. Multics was to be a time-sharing operating system. However, it started falling apart and these two engineers from AT&amp;T branched off to make their own, smaller version of this. This turned out to be UNIX, which sarcastically meant the "uniplexed" version of Multics.<br><br>AT&amp;T was trying to standardize their System V version of UNIX. But then, UC Berkeley made their own version of an OS based off of UNIX which they called <a data-href="BSD" href="BSD" class="internal-link" target="_self" rel="noopener">BSD</a>. BSD shipped with networking capabilities. This period of competition among companies to standardize their OS is termed the UNIX wars. And also AT&amp;T copyright striked BSD.<br><br>To avoid legal issues, Stallman made an operating system based on UNIX by remaking its code. So, GNU doesn't contain any code from UNIX. It even stands for "GNU is Not UNIX". <br><br>GNU had its own kernel called GNU Hurd, but it was incomplete. Around the same time, Linus Torvalds was working on his hobby project, the Linux kernel. This kernel was then integrated with GNU to give us GNU/Linux.<br>
+What we commonly refer to everyday as Linux is actually GNU/Linux. GNU/Linux was free, both free as in cost and free as in freedom. <br><br>There was no organization making decisions. The Linux kernel is free, and anyone can make their own distro. So, distros started popping up, just because people could make them. Softlanding, Yggdrasil were among the earliest distributions. Slackware was based off of Softlanding and openSUSE is based off of Slackware.<br><br><br>NetworkManager is a service that continuously scans for networks, and connects to the most preferred ones. Wired networks are given more preference over wireless networks. This program is used a lot on laptops where wireless network management is a necessity and we keep switching between networks. For servers, this is completely unnecessary. <br>Enterprise distributions
+NetworkManager has been widely adopted by lots of distributions to run by default, such as Debian and Ubuntu. But on enterprise distributions like CentOS and Red Hat, NetworkManager is not configured or installed by default.
+<br><br><br>The oldest and most widely accepted way of doing this is through the /etc/hosts file. This file contains information (in a line by line) about <a data-href="IP addresses" href="IP addresses.html" class="internal-link" target="_self" rel="noopener">IP addresses</a> and their names in the following format:<br>127.0.0.1	localhost
+127.0.1.1	zephyrus-ubuntu
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+Copy<br>This file however, contains only local mappings and is best reserved for mappings that are required during boot. Other mappings can be found using <a data-href="DNS" href="DNS" class="internal-link" target="_self" rel="noopener">DNS</a> or <a data-href="LDAP" href="LDAP" class="internal-link" target="_self" rel="noopener">LDAP</a>.<br>On Linux, the configuration file for the <a data-href="DHCP" href="DHCP.html" class="internal-link" target="_self" rel="noopener">DHCP</a> client can be found at /etc/dhcp/dhclient.conf.<br><br>A network interface is just hardware that can connect to a network. Machines with multiple ethernet ports, for example, will have different network interfaces controlling each port. Every network interface (hardware, not virtual) has a unique <a data-tooltip-position="top" aria-label="computers/MAC address" data-href="computers/MAC address" href="computers/MAC address" class="internal-link" target="_self" rel="noopener">MAC address</a> (also called hardware address) (which is chosen at time of manufacture) to identify itself.<br>Every machine has the lo network interface, which is virtual and is a loopback. A loopback interface is used by a machine to connect to itself. The other interfaces are hardware dependent. On my laptop for example:<br>wahid@zephyrus-ubuntu:~$ ip link show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eno1: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 50:eb:f6:e1:84:26 brd ff:ff:ff:ff:ff:ff
+    altname enp2s0
+3: wlp3s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+    link/ether b4:8c:9d:5b:1d:6b brd ff:ff:ff:ff:ff:ff
+Copy<br>There is the before mentioned lo interface. Then there is a eno1 interface that controls the ethernet port and a wlp3s0 wireless network interface.<br>These network interfaces can be turned on and off using<br>ip link set &lt;device&gt; &lt;on|off&gt;
+Copy<br><br>When a network packet bound for some other host arrives, then the packet's destination IP is searched for in the kernel's routing table. From here, one of two things can happen:<br>
+(To understand how the packet is sent from a device to the router via Ethernet : <a data-href="ARP" href="ARP.html" class="internal-link" target="_self" rel="noopener">ARP</a>)<br>
+<br>The destination IP is found in the kernel's routing table; that is, the destination address is either local or can be reached via a local gateway. Then the packet is forwarded to the appropriate destination. 
+<br>The destination IP is not found in the kernel's routing table. The default route (0.0.0.0) is invoked.<br>
+An example kernel routing table:
+<br>Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG        0 0          0 wlp3s0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 wlp3s0
+192.168.1.0     0.0.0.0         255.255.255.0   U         0 0          0 wlp3s0
+Copy<br>Network statistics
+ip -s link command gives us network statistics for each network interface on a device.
+<br><br>Secure SHell (ssh) is a protocol for remote logins. It is a client-server protocol that requires that the remote machine be running an SSH <a data-tooltip-position="top" aria-label="computers/Daemon" data-href="computers/Daemon" href="computers/Daemon" class="internal-link" target="_self" rel="noopener">daemon</a>. OpenSSH, an open source implementation of SSH is the standard on almost all versions of UNIX and GNU/Linux.<br>
+Basic usage: ssh user@host or ssh -l user host<br><br>When we use ssh to connect to a remote host, that is not recognized by our machine (a remote host that we have previously not connected to), the server sends a hash of its public key called the key fingerprint. If we choose to accept this "unknown" remote server's fingerprint, then the fingerprint is added to ~/.ssh/known_hosts.<br><br>These are stored at ~/.ssh. However, if this directory doesn't have the permissions set to 0700, it is ignored. The SSH protocol can make use of public key cryptography (it also has other means of authentication) for authentication.<br>Here is how SSH is usually configured an used:<br>
+<br>The user creates a private-public key pair with ssh-keygen
+
+<br>ssh-keygen can be used to generate specific types of keys with the -t flag.
+<br>ssh-keygen -t rsa -b 4096 generates an <a data-href="RSA" href="RSA" class="internal-link" target="_self" rel="noopener">RSA</a> key with 4096 bits.
+<br>We are also prompted to set an optional passphrase for the keys.
+
+
+<br>The private and public keys are stored as ~/.ssh/id_rsa and ~/.ssh/id_rsa.pub respectively.
+<br>Now, if the server has our public key listed in its ~/.ssh/authorized_keys, then we are allowed to login to this account via SSH.
+Important
+It is necessary that our remote user's ~/.ssh directory have the permssions set as 0700 and that ~/.ssh/authorized_keys (which contains our public key) have the permissions set to 0600. 
+
+
+<br><br>ssh-agent is a daemon, that caches private keys. When using ssh, the private keys that are cached are used automatically. It is also possible to have multiple private keys cached.<br>
+<br>A private key can be loaded using the ssh-add command as follows - ssh-add ~/.ssh/id_rsa
+<br>And currently loaded private keys can be listed with ssh-add -l
+<br>To remove a private key, we do ssh-add -d ~/.ssh/id_rsa (This one is weird, it apparently requires that the public key be present in the same directory as the key we are trying to remove. If we don't have the public key, it can be extracted by doing ssh-keygen -yf ~/.ssh/id_rsa)
+<br>ssh-add -D purges all cached keys<br>
+Arguably, the most important feature of ssh-agent, is that cached keys can be forwarded to remote machines. This means, we don't have to copy over our private keys to jump around remote hosts. The cached keys are taken forward with us, whenever we ssh, provided we use ssh -A (A stand for agent forwarding).
+<br><br>Local port forwarding is done with the -L flag like this -<br>ssh -L local_port:remote_address:remote_port user@host
+Copy<br>Alright, this is kinda fucky to read, but whats happening is basically<br><br>Basically, the host tries to access the remote service instead of us, and just forwards us the data on local_port. And also, whatever we send to local_port gets forwarded to remote_address:remote_port<br>We can also specify -R for remote port forwarding. This is where we allow a remote server to access our local ports.<br>
+Example<br>
+If we have a webserver running on port 80 on our machine, and we have done ssh -R 9000:localhost:80 user@host. Then any requests to the host at port 9000 will be forwarded to localhost on port 80.<br><br><br>The sed command is used to modify text content line by line.<br>
+Example<br>
+sed '1,4 s/x/y/5g' file replaces every 5th and later occurences in the range of linenumbers 1 to 4.<br>Some things to note:<br>
+<br>s means substitute
+<br>d means delete
+<br>\b means word boundary
+<br><br>The awk command can split each line of input based on specifed delimiters into fields, and then perform functions on these fields. Some of the most commonly used functions are print and boolean logic.<br>
+Example<br>ps lax | awk -F' ' '$3 == 1'
+Copy<br>This command would split each line into fields using ' ' as delimiter, and print only lines that have the third field equal to 1. The 3rd field of ps lax is PID. So this would print -<br>4     0       1       0  20   0  22256 12408 -      Ss   ?          0:05 /sbin/init
+Copy<br><br>The cut command is used to display a specific field (portion) of output given a delimiter. Given a delimiter, it splits up each line accordingly and numbers each field from 1.<br>
+<br>-d flag is used to specify delimiter
+<br>-f is used to specify field number<br>
+Example
+<br>wahid@zephyrus-ubuntu:~$ echo 'f1,f2,f3:f4,f5,f6:f7,f8,f9' | cut -d: -f2
+f4,f5,f6
+Copy<br><br>This command output the number of lines, words and characters in a given file. It it almost always used with the corresponding flags -l, -w, -c to output only numbers, <a data-tooltip-position="top" aria-label="computers/Linux > Bash scripting > Variables" data-href="computers/Linux#Bash scripting#Variables" href="computers/Linux#Bash scripting#Variables" class="internal-link" target="_self" rel="noopener">surrounded by backticks</a>.<br><br>Is basically like a T-fixture in plumbing. Redirects its input to STDOUT and a specified file.<br><br>The filesystem can be thought of as an explorable hierarchy that starts off at /, the root directory. Each component of a pathname can only be 255 characters long. And the entire pathname can only be 4095 bytes long on Linux. <br><br>Think of our filesystem as a tree and a filesystem on another disk as a branch. We can add external filesystems to our "tree" by using the mount command. mount is a wrapper for filesystem specific mount commands.<br>
+Example usage<br>mount /dev/nvmen1p5 /mnt
+Copy<br>This 'mounts' (or attaches) the filesystem at /dev/nvmen1p5 to /mnt. So we can cd into /mnt and browse it.<br>
+umount is used to unmount a filesystem.<br><br>The contents of the file /etc/fstab dictate what filesystems are to be mounted and fsck'ed at boot time. Turns out that fsck is also a wrapper like mount for filesystem specific fsck commands. These are present in the /sbin directory.<br>wahid@zephyrus-ubuntu:~$ ls /sbin/ | grep fsck
+dosfsck
+e2fsck
+fsck
+fsck.cramfs
+fsck.ext2
+fsck.ext3
+fsck.ext4
+fsck.fat
+fsck.minix
+fsck.msdos
+fsck.vfat
+Copy<br><br>Info
+sbin and bin were used to differentiate between statically and dynamically linked binaries. But these days they have no real difference.
+<br>
+<br>/bin and /sbin contain system critical utils
+<br>/var contains log files and other files that change rapidly
+<br>/tmp is for temp files
+<br>/usr is where standard important files are kept, but these are not system critical
+<br>/lib and /lib64 is for shared libraries. These are often symlinks to /usr/lib and /usr/lib64
+<br>/etc is for system critical configuration files
+<br>/boot is where the file containing the kernel is located along with the bootloader
+<br>/dev is a virtual fs??? Further study required
+Tip
+man hier tells us general info about the filesystem hierarchy. It may not be followed on the system, it is just a general overview.
+
+
+<br><br>ls -la lists out the file types and <a data-tooltip-position="top" aria-label="computers/Linux > Permissions" data-href="computers/Linux#Permissions" href="computers/Linux#Permissions" class="internal-link" target="_self" rel="noopener">permissions</a>. The characters given below can be used as a reference to this command's output.<br><br><br>These are just a blob of data, a series of bytes. They could be text, libraries, executables and so on.<br><br>A directory contains a list of references (hardlinks) to files. ., .. are special directories that mean current and parent directory. The name of a file is stored in the directory it is in, and not the file itself. So, it is possible for multiple directories to contain a reference to the same file.<br>Important
+A file with write permissions disabled can still be deleted, as it is the directory that contains the file name to data mapping. So, to delete a file, we would require write and execute permissions on the directory and not the file itself (read perms too if we do not know the file name). 
+<br>A directory stores the name of a file and its <a data-href="inode" href="inode.html" class="internal-link" target="_self" rel="noopener">inode</a> number.<br>
+Related: <a data-tooltip-position="top" aria-label="computers/Linux > File permissions and attributes > Directory" data-href="computers/Linux#File permissions and attributes#Directory" href="computers/Linux#File permissions and attributes#Directory" class="internal-link" target="_self" rel="noopener">Directory permission</a><br><br>Device files act as a gateway between the filesystem and device drivers. When a request is made to a device file, it just forwards the request to the appropriate device driver. Each device file has a major and minor device number, to represent which driver and which unit of that driver to refer to.<br>
+Example<br>
+/dev/tty0 and /dev/tty1 would have the same major number but different minor numbers.<br><br>Sockets allow processes to communicate. Also called Unix Domain Sockets (UDS), these are specifically used for communication between processes running on the same host OS. Unlike <a data-href="TCP" href="TCP" class="internal-link" target="_self" rel="noopener">TCP</a> packets which are used for communication between processes running on a network.<br>
+So, because UDS know they're on the same host, they can avoid a few checks that TCP/IP packets go through, and therefore be lighter and faster.<a href="about:blank#fn-1-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[1]</a><br>
+A socket is also bidirectional, and can be used by multiple processes simultaneously.<br><br>Named pipes / FIFOs are basically super primitive local domain sockets. They have nothing to do with a network, are not bidirectional. We would require two pipes, one for read and one for write, for each client process that would want to communicate.<a href="about:blank#fn-2-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[2]</a><br><br><br><br>Symlinks or softlinks are a pointer to a file. If the file is moved or is removed, then the symlink becomes invalid.<br><br>Theres a few different types of filesystems, each aiming to be good at specific things. ext4 is the standard in Debian and Ubuntu, while CentOS and Red Hat use XFS.<br>
+Filesystems like ext4, XFS are "traditional" in the sense that they do not handle stuff like volume management and RAID. Those things are handled separately, away from the filesystem. Non traditional filesytems would be ones like BTRFS and ZFS. They support integrated approahced to managing RAID, volumes, and even snapshots(?).<br><br>The ext4 filesystem is what is called a journaling filesystem. Journaling is somewhat like transactions in SQL. Whatever fs operation is to be performed is written to a journal, and then it is commited. Only then is the actual modification made.<br>
+If for some reason the actual operation failes, the filesystem can just look at the journal and safely reapply the last commit.<br>Info
+ext3 was the first to introduce journaling in the ext family. ext4 was just small revision over ext3 that extended a few limits
+<br><br>BTRFS and ZFS follow what is called Copy On Write. With COW, the entire filesystem moves from one consistent state to another. Instead of modifying data in place on the disk, an in-memory copy is modified and then written to some vacant block. And whatever was pointing to the original data is also rewritten to point to the new block. And so on, the parent's parent is rewritten up until the topmost level.<br><br>Package managers make managing software easier. Packages they install often generate new config files, add new groups. <br>Version numbers
+The version number in the name of a package might not always match the version number of the actual software it contains.
+<br>Debian has dpkg to install .deb files. dpkg --install package.deb installs the package if it is not already installed. If it is already installed, then dpkg removes the existing package before installing the new one.<br><br>Debian uses Advanced Package Tool (APT) as its package manager. APT started out at the Debian and dpkg side, but nowadays it also handles RPMs.<br><br>Sometimes an empty package is listed with a bunch of dependencies, so that all these dependencies can be installed under a single alias. For example, gnome-desktop-environment is not actually an existing software package, but is a dummy package with a list of dependencies that are required to run GNOME.<br><br>The configuration file for apt is located at /etc/apt/sources.list. This file contains information about where to find packages.<br>
+Each line is supposed to follow this format:<br>
+<br>Type: Can be deb, deb-src, rpm, rpm-src
+<br>A URL that points to a file or an http server or an ftp server from which to fetch packages
+<br>A release name (that is often called a "distribution")
+<br>A list of components that are basically categories of packages. universe is one such component that has lots of open-source software. main, multiverse are some other examples
+<br><br>apt is actually a wrapper for a bunch of other low-level commands like apt-get<br>
+<br>update forces apt to download and update package information from configured repositories
+<br>upgrade installs available upgraded packages. If an older dependency is no longer required, it will NOT be removed
+<br>autoremove removes all orphan dependencies. If however, this orphan dependency is something that is useful (it could be a standalone package that we manually installed), then it can be marked with apt-mark for autoremove to exclude it
+<br>install searches for a given package name and installs it
+<br>remove just removes an installed package but leaves behind configuration files
+<br>purge is remove but also removes config files. NOT the config files in /home. purge also works on already remove'd packages
+<br><br><br>Every file has attributes. 9 of these are standard permission triplets - read, write and execute for the user (owner), group and others (everyone else).<br>
+<img alt="File permissions in Linux" src="https://kodekloud.com/community/uploads/db1265/2b55c1d1d6eb1bf6290526e715d06aeece48e099" referrerpolicy="no-referrer"><br><br>Each file also has 3 other bits -<br>
+<br>SUID (set user id) 
+<br>SGID (set group id)
+<br>Sticky bit<br>
+These bits are shown as the third bit in each triplet.<br>
+s implies that x is also set. S implies that only the set... bits are set and not the x bit.<br>
+t implies that x is also set. T implies that only the sticky bit is set and not the x bit.<a href="about:blank#fn-3-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[3]</a>
+<br>When the third bit in the user triplet is s, then it is the setuid bit.
+<br>When the third bit in the group triplet is s, then it is the setgid bit.
+<br>The other triplet's third bit can't be s.
+<br><br>SUID: When set on an executable file, the file is executed with the permissions of the user (owner).<br>
+SGID:  When set on an executable file, the file is executed with the permissions of the group of the user.<br>
+Sticky: Was used to retain programs in memory. Is now obsolete.<br><br><br>A directory just stores a filename and the file's inode number. Read permissions on a dir allow for accessing the filenames only. Write permissions allow for adding, renaming and deleting the files in it.<a href="about:blank#fn-4-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[4]</a><br>
+The "execute" bit is reused as the search permission. When it is set, we are allowed to search for a file's inode. We can only read the files inside a directory, if we have read perms on the file itself and search (execute) perms on the directory. The execute bit is also required for the stat() syscall, which is called during opening and deletion of a file.<br>SUID: Has no effect.<br>
+SGID: Files created in the directory will inherit the group of the directory.<br>
+Sticky: If set, only the owner and the super user are allowed to rename or delete files in it.<br><br><br><br><br>Each process is assigned a unique ID by the kernel called a Process ID (PID). When a process wants to call a sub process, it must clone itself, and then exchange itself with a different process. This clone is called the child process, and the original process is the parent process. The child is given an attribute called the Parent PID (PPID) which is the PID of the parent process.<br><br>
+<br>UID is the ID of the user under which the process was invoked
+<br>EUID is the ID of the user, with whose perms the process is being run. It is usually the same as UID, but in case of sudo'ing a process, its EUID will be root's UID
+<br>GID and UGID are similar to how UID and EUID work
+<br><br>A process's CPU time is determined based on how much CPU time it has most recently used, and how long it waited, and something called the nice value or niceness. The higher the niceness, the higher the priority.<br>We can observe two values - PR (priority) and (NI) niceness, when we use a process explorer like top. PR and NI are related as - <a href="about:blank#fn-5-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[5]</a><br>
+PR = 20 + NI<br>
+<br>The kernel allows for 140 priority values from -100 to 39, both included. The priorites from -100 to -1 (100 total) are called real time priorites, and these take priority over the normal processes.
+<br>As for the niceness values, the range is -20 to 19, both included. So, the priority level for a nice'd process maps from 0 to 39, which are the rest of the 140 priorities.<br>
+We can set a process' niceness before it starts with the nice command as show here -
+<br>nice -n &lt;value&gt; ./process
+Copy<br>We can also set niceness to a running process with renice as follows -<br>renice -n 10 -p $(pgrep firefox)
+Copy<br>(The -p flag is to specify that we will pass in PIDs).<br>We CAN set niceness to a negative value to make a process realtime, but this would require higher perms (sudo or root user). Real time processes will have negative PRs, like discussed earlier, but some of them might also have rt as their PR, which means -100, or highest priority.<br><br><br><br>Processes with a known PID can be stopped using the kill command. This command also takes in a signal as an argument that is sent to the process.<br>
+^C sends a SIGINT signal which is an interrupt signal, and the program can handle this interrupt; in most cases it aborts. <br>Processes can be stopped usually with a SIGINT, if however that fails, we can use -<br>
+<br>kill -9 &lt;PID&gt; to send a SIGKILL. If this fails for some reason, the only way to kill it properly is to reboot. For other possible signals, try kill -l
+<br>killall &lt;name&gt; is very similar to kill, but instead of PIDs it takes names and kills all processes by that name. Default signal is SIGTERM but we can change it just like with kill.
+<br>pgrep or process grep, basically greps processes by name and lists their PIDs. pkill kills them instead of listing them. We can also pkill by owner of the process using the -u flag and specifying user.
+<br><br>^Z sends a SIGTSTP signal which suspends a process.<br>
+Suspended processes can be viewed using the jobs command, and can be resumed to foreground or background with the fg and bg commands followed by the index that the jobs command provides.<br><br>Processes can be monitored using the ps command. This command's output is highly configurable and the most important and common usage is -<br>
+<br>ps aux, a for all processes, x for including processes without a control terminal, u for user oriented output
+<br>One drawback of the u flag is that it converts all the UIDs to usernames, which might be very slightly computationally expensive. So, a "more" efficient way is ps lax which lists the output in (l) long format
+<br>Additionally add ww to the args to allow for wrapping
+How can a process not have a control terminal?
+Processes that are started by the system's init system (systemd or init ...) don't have a control terminal.<br>
+Daemons startup by forking a child process and then the parent process is killed. The daemon is now an orphan and is adopted by the init system. Therefore, a daemon will also not have a control terminal.
+
+
+<br>strace can be used to attach to a process by doing strace -p &lt;PID&gt; and it outputs all syscalls made by that process.<br><br>cron is used to schedule tasks. It is configured by modifying the cron table (crontab). When a cron service is active, it will schedule all tasks in the crontab. The actual location of crontabs depends on the implemenation that is being used.<br><br>Each line in crontab follows this format<br>minute hour day_of_month month day_of_week command
+Copy<br>
+<br>All the time variables start with 0 except for day_of_the_month and month
+<br>day_of_week starts with 0 as sunday<br>
+Example <a href="about:blank#fn-6-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[6]</a>
+<br>*/5 9-16 * 1-5,9-12 1-5 ~/bin/i_love_cron.sh
+Copy<br>This would run the script<br>
+<br>Every 5 minuts
+<br>From 0900 to 1655
+<br>Every day of the month
+<br>Except for the months - 6,7,8 (June, July and August)
+<br>On the weekdays (1-5)
+<br><br><br>When the kernel finishes its initialization process, it starts the init process. init is (was lol) a system management daemon. It has a number of important responsibilites including (but not limited to) -<br>
+<br>Setting hostname, timezone
+<br>fsck'ing filesystems and mounting the filesystems in fstab
+<br>Configuring network interfaces
+<br>Starting up other daemons<br>
+The most commonly used init systems presently are -
+<br>"Traditional" init, which is based on AT&amp;T's SystemV init. This one was the standard until systemd came along
+<br>The init that is used in BSD systems, and is based off of BSD UNIX
+<br>systemd, which aims to handle everything about daemons and system management
+Other init systems
+Mac used to use launchd until it eventually switched to systemd<br>
+Ubuntu up until 17.10 used upstart, also switched to systemd<br>
+Void Linux uses runit
+
+
+<br><br>systemd handles more than just processes. It handles network connections, kernel logs, logins. It has all the features that traditional init did, but adds on to it so much more and unifies them.<br>systemd controversies
+systemd, seemingly goes against UNIX philosophy which is to keep components as small as possible. So, of course there is an anti-systemd fandom. For the funny: <a rel="noopener" class="external-link" href="https://without-systemd.org" target="_blank">https://without-systemd.org</a>
+<br>systemd manages entities that it calls units. A unit can be a lot of things, so I won't list all of them here, but some of the important ones are a service, a socket, a device, a mount point.<br>
+We can differentiate them with their "extension". A service, for example would end with .service.<br>
+Example unit file<br>[Unit] 
+Description=fast remote file copy program daemon ConditionPathExists=/etc/rsyncd.conf 
+
+[Service] 
+ExecStart=/usr/bin/rsync --daemon --no-detach 
+
+[Install] 
+WantedBy=multi-user.target
+Copy<br>Unit files can be found at - <br>
+<br>/usr/lib/systemd/system
+<br>/lib/systemd/system
+<br>/etc/systemd/system (Highest priority)
+<br><br>To manage systemd units, we have the systemctl command. This can be used to -<br>
+<br>start and stop a service
+<br>enable and disable a service to start at boot
+<br>list-units to list all installled units
+
+<br>Additionally we can provide the unit name
+<br>Or the type argument, --type=service for example, to filter between units
+
+
+<br>check status 
+<br><br><br>The Bourne shell is the original UNIX shell that was developed by AT&amp;T. The sh that we use today is the Alqmuist shell, which is a reimplementation. The Bourne again shell, bash is pretty much the standard for both login shells and for scripting.<br><br><br>Every process has atleast three channels available - STDIN, STDOUT, STDERR. Which are assigned numbers called file descriptors, in this case 0, 1, 2 respectively. We are allowed to redirect these channels among processes in a number of ways by using a few symbols. <a href="about:blank#fn-7-dc74106147ef2120" class="footnote-link" target="_self" rel="noopener">[7]</a><br>
+<br>&lt; connects STDIN to an existing file
+<br>&gt; and &gt;&gt; write and append to a file respectively. They connect STDOUT to a file.
+<br>&gt;&amp; is used to redirect both STDOUT and STDERR to the same location.
+<br>2&gt; is used to redirect only STDERR
+
+<br>A common usecase for this is to dump all errors to /dev/null
+
+
+<br>1&gt;&amp;2 redirects STDOUT to STDERR
+<br>2&gt;&amp;1 redirects STDERR to STDOUT
+<br>| connects the STDOUT of one command to the STDIN of another
+<br>&amp;&amp; executes the second command if the first one succeeds
+<br>|| executes the second command if the first one fails
+<br>; can be used to write a bunch of commands in one line
+<br><br><br>Variables are assigned as var='text'. But they are referenced, prefixed with a $ sign, like $var. When a variable has to be referenced inside a string, we additionally surround the variable name in {}, like ${var}.<br>
+Anything that is wrapped in backticks is treatead like a command, and the output of the command is substituted.<br><br>When a process starts, it receives all command line arguments along with these "pre-existing" variables called environment variables. Based on environment variables, a program can decide to change its behaviour.<br>
+Example<br>
+When the MOZ_ENABLE_WAYLAND environment variable is set to 1. Firefox will try to use wayland instead of x11.<br><br>The currently set environment variables can be listed with the printenv command.<br>
+Example<br>wahid@zephyrus-ubuntu:~$ printenv
+SHELL=/bin/bash
+SESSION_MANAGER=local/zephyrus-ubuntu:@/tmp/.ICE-unix/1901,unix/zephyrus-ubuntu:/tmp/.ICE-unix/1901
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+...
+Copy<br><br>The export keyword can be used to "promote" a shell variable to an environment variable. Environment variables that are to be setup at login, are export'ed in ~/.profile or ~/.bash_profile.<br><br>^P in an active terminal session brings up the last used command. By using the fc command, we can save our current command to a file, in our preferred editor (the editor is set with an env variable).<br><br>printf respects escape characters unlike echo and can be used whenever something has to be output.<br>
+read var can be used to get a string of text from STDIN and store it in a variable var.<br><br>Any arguments that were passed to the script can be accessed using $ followed by the index of the argument (starting from 1, 0 is the actual command that was used to invoke the script).<br>
+Important example<br>example arg1 arg2 arg3
+Copy<br>
+<br>$1 would be arg1, $2 would be arg2 and so on
+<br>$# contains the total number of arguments (doesn't count $0)
+<br>$* contains all the arguments 
+<br>$? contains the exit code of the previously executed command or script
+<br><br>The terminator for an if statement if fi. Else-if clauses are written as elif and else clauses are just else.<br>
+Syntax example<br>if [ $base -eq 1 ] &amp;&amp; [ $dm -eq 1 ]; 
+	then installDMBase 
+elif [ $base -ne 1 ] &amp;&amp; [ $dm -eq 1 ]; 
+	then installBase 
+elif [ $base -eq 1 ] &amp;&amp; [ $dm -ne 1 ]; 
+	then installDM 
+else echo '==&gt; Installing nothing'
+fi
+Copy<br>The [] are used to invoke test. test is a command that is used to compare two arguments. It returns the evaluated boolean as an exit code, 0 for false and 1 for true.<br>
+Example<br>wahid@zephyrus-ubuntu:~$ test 23 -eq 23
+wahid@zephyrus-ubuntu:~$ echo $?
+0
+wahid@zephyrus-ubuntu:~$ test 23 -le 2
+wahid@zephyrus-ubuntu:~$ echo $?
+1
+Copy<br>However, nowadays, test's functionality is built into the shell and /bin/test is not actually invoked.<br><br>Comparision operators are not listed here as there are very few and easy to remember. One that should be noted are<br>
+<br>-n x evaluates to true if x is not null
+<br>-z x evaluates to true if x is null
+<br>&lt;, &gt; when used must be double bracketed or escaped so they don't get misinterpreted as redirection operators<br>
+sh also has operators for files. They are - 
+<br>-d to check if file exists and is a directory
+<br>-f to check if file exists and is a regular file
+<br>-r to check if read perms
+<br>-w to check if write perms
+<br>-s to check if file exists and is not empty
+<br>-e to check if file exists
+<br>-nt and -ot for newer than and older than
+<br><br>The unusual thing to note here is that each pattern to be matched ends with a ) and after the case is handled, it is closed with ;;. A case is compared with a specific pattern usinig the in keyword. After all cases, have been handled, the statement is closed with esac.<br>
+Example<br>case "$1" in
+1) echo "Sending SIGHUP signal....."
+    kill -SIGHUP $2 ;;
+2) echo  "Sending SIGINT signal....."
+    kill -SIGINT $2 ;;
+3) echo  "Sending SIGQUIT signal....."
+    kill -SIGQUIT $2 ;;
+4) echo  "Sending SIGKILL signals....."
+   kill -SIGKILL $2 ;;
+*) echo "Signal number $1 has not been processed" ;;
+esac
+Copy<br><br><br>for var in ...; do syntax can be used for iterative loops. Space seperated arguments after the in keyword are treated as a list and are iterated over as var. A for loop is closed with a done keyword.<br>
+If the in ... part is left out, then the command line arguments are iterated over in a global for loop. If however, the for loop is part of a function, then the function arguments are iterated over.<br>
+The iterative list that is provided also supports wildcards just like the command line does.<br>
+Bash also supports traditional for loops like - <br>for (( i=0 ; i &lt; $CPU_COUNT ; i++ )); 
+	do CPU_LIST="$CPU_LIST $i" 
+done
+Copy<br><br>The general syntax is -<br>while command; do
+	...
+done
+Copy<br>We can pass in a command to a while clause, and it will loop until the command returns a non zero exit code. This allows us to do stuff like this for example -<br>while read line; do
+	echo "$line"
+done
+Copy<br><br>To force arithmetic between variables instead of the default (concatenation) we use $((...))). $a+$b would concat the two variables, whereas $((a+b)) would add them. As a general rule of thumb, use double parantheses whenever arithmetic is needed.<br><br>A shell script (sh) can consist of nothing but commands. The first line has what is called a shebang - #! followed by the location of the interpreter that should be used to execute the script.<br>
+<br>#!/bin/sh would execute the script using sh
+<br>We can also use other interpreters or commands to run our script, provided they're in PATH by doing #!/usr/bin/env python, for example<br>
+We will also have to make the script executable by setting its execute bit. It is bad practice to use setuid bits for managing security, and instead sudo should be used.<br>
+If the shebang is set, we can invoke the script directly by its name to run it. Or we can pass the script path as argument to sh or bash or whatever interpreter we are using.
+<br><br><br>There are two partitioning schemes -<br>
+<br><a data-href="MBR" href="MBR.html" class="internal-link" target="_self" rel="noopener">MBR</a>
+<br><a data-href="GPT" href="GPT.html" class="internal-link" target="_self" rel="noopener">GPT</a>
+<br><br><a data-tooltip-position="top" aria-label="computers/Linux > Filesystem > Device files" data-href="computers/Linux#Filesystem#Device files" href="computers/Linux#Filesystem#Device files" class="internal-link" target="_self" rel="noopener">Block devices</a> are special types of files that allow for buffered access to any hardware. To list all block devices, we use the lsblk utility.<br>
+Example from my laptop<br>❯ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 953.9G  0 disk 
+├─nvme0n1p1 259:1    0   260M  0 part 
+├─nvme0n1p2 259:2    0    16M  0 part 
+├─nvme0n1p3 259:3    0 554.7G  0 part 
+├─nvme0n1p4 259:4    0    16G  0 part [SWAP]
+├─nvme0n1p5 259:5    0   240G  0 part /
+├─nvme0n1p6 259:6    0   750M  0 part 
+├─nvme0n1p7 259:7    0    22G  0 part 
+├─nvme0n1p8 259:8    0   200M  0 part 
+└─nvme0n1p9 259:9    0   120G  0 part 
+Copy<br><br>Once we identify the device file corresponding to the disk we want to partition, we can use utilities like fdsik, cfdisk, gparted.gparted is a GUI based tool, it is also what Ubuntu's installer uses.<br><br>
+<br>fdisk is a safe bet, as most linux distros ship with it. Basic usage is fdisk /dev/sdx
+<br>fdisk has a bunch of commands. These also have their shorthand notations, usually as one letter
+
+<br>g : GPT partition table
+<br>n : Create new partition
+<br>And so on, a complete list can be viewed by using help as a command
+
+
+<br>When creating a new partition, it asks for
+
+<br>Partition number
+<br>First sector
+<br>Last sector
+
+
+<br>It is smart enought to figure out the partition number and auto increment for successive partitions. It is also smart enought to figure out the first sector based on the partitions that have already been made. The last sector part is what we really need to focus on.
+<br>If the last sector is input to be +20G for example, the last sector will be set to first_sector + 20GBytes. Basically, +size will create a new partition starting at the first sector we provide, that is as big as the size we provide.
+<br><br>Once we have partitioned the disk, we format each partition based on what its function should be. There are lots of different filesystem types, a couple of them are discussed at <a data-tooltip-position="top" aria-label="computers/Linux > Filesystem > Types of filesystems" data-href="computers/Linux#Filesystem#Types of filesystems" href="computers/Linux#Filesystem#Types of filesystems" class="internal-link" target="_self" rel="noopener">types of filesystems</a>. Partitions are formatted with the mkfs.&lt;type&gt; commands. A list of available commands can be found at /sbin.<br>❯ ls /sbin/ | grep mkfs
+mkfs
+mkfs.bfs
+mkfs.btrfs
+mkfs.cramfs
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+mkfs.minix
+mkfs.ntfs
+Copy<br>Example<br>
+To format a partition, say /dev/sda1 as ext4. We would do mkfs.ext4 /dev/sda1.<br>For mounting partitions, refer <a data-tooltip-position="top" aria-label="computers/Linux > Filesystem > mount" data-href="computers/Linux#Filesystem#mount" href="computers/Linux#Filesystem#mount" class="internal-link" target="_self" rel="noopener">mount</a>.<br><br>
+<br>Book: UNIX and Linux System Administration Handbook-Addison-Wesley<br>
+Refer footnotes for other references.
+<br>
+<br>
+<br>External: <a rel="noopener" class="external-link" href="https://serverfault.com/questions/124517/what-is-the-difference-between-unix-sockets-and-tcp-ip-sockets" target="_blank">https://serverfault.com/questions/124517/what-is-the-difference-between-unix-sockets-and-tcp-ip-sockets</a><a href="about:blank#fnref-1-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://unix.stackexchange.com/questions/75904/are-fifo-pipe-unix-domain-socket-the-same-thing-in-linux-kernel" target="_blank">https://unix.stackexchange.com/questions/75904/are-fifo-pipe-unix-domain-socket-the-same-thing-in-linux-kernel</a><a href="about:blank#fnref-2-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://wiki.archlinux.org/title/File_permissions_and_attributes" target="_blank">https://wiki.archlinux.org/title/File_permissions_and_attributes</a><a href="about:blank#fnref-3-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://wpollock.com/AUnix1/FilePermissions.htm" target="_blank">https://wpollock.com/AUnix1/FilePermissions.htm</a><a href="about:blank#fnref-4-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://askubuntu.com/questions/656771/process-niceness-vs-priority" target="_blank">https://askubuntu.com/questions/656771/process-niceness-vs-priority</a><a href="about:blank#fnref-5-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://wiki.archlinux.org/title/cron#Crontab_format" target="_blank">https://wiki.archlinux.org/title/cron#Crontab_format</a><a href="about:blank#fnref-6-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+<br>External: <a rel="noopener" class="external-link" href="https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html" target="_blank">https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html</a><a href="about:blank#fnref-7-dc74106147ef2120" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+]]></description><link>Linux.html</link><guid isPermaLink="false">Linux.md</guid><pubDate>Sun, 26 May 2024 17:53:40 GMT</pubDate><enclosure url="https://kodekloud.com/community/uploads/db1265/2b55c1d1d6eb1bf6290526e715d06aeece48e099" length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;https://kodekloud.com/community/uploads/db1265/2b55c1d1d6eb1bf6290526e715d06aeece48e099&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[MAC address]]></title><description><![CDATA[ 
+ <br>A media access control (MAC) address is a unique address that is assigned to a <a data-tooltip-position="top" aria-label="computers/Linux > Network interface" data-href="computers/Linux#Network interface" href="computers/Linux#Network interface" class="internal-link" target="_self" rel="noopener">network interface</a> at the <a data-tooltip-position="top" aria-label="computers/TCP > Data Link layer" data-href="computers/TCP#Data Link layer" href="computers/TCP#Data Link layer" class="internal-link" target="_self" rel="noopener">data link layer</a>. A network interface will have a MAC address regardless of whether it has an IP address or not.]]></description><link>MAC address.html</link><guid isPermaLink="false">MAC address.md</guid><pubDate>Sat, 18 May 2024 17:58:36 GMT</pubDate></item><item><title><![CDATA[MBR]]></title><description><![CDATA[ 
+ <br>Master Boot Record (MBR) is a really old Microsoft standard for defining partitions. An MBR label can only occupy the first 512 Bytes of a disk block. Only enough space is left to define four partitions after the boot code. It is possible to have extended partitions by defining more MBRs in one of these 4 partitions, but it is as fucky as it sounds, and cause subtle problems. <br><br>MBR used 32 bit addressing to store the addresses of sectors. Each sector can store 512 bytes. So a total size of  is the limitation.<br>MBR allows for one partition to be marked as active, which is where the bootloader looks to load the OS. The DOS command that was used, was also called fdisk, thought on modern Windows, we use diskpart for managing disks.]]></description><link>MBR.html</link><guid isPermaLink="false">MBR.md</guid><pubDate>Sun, 26 May 2024 16:51:55 GMT</pubDate></item><item><title><![CDATA[Multics]]></title><description><![CDATA[ 
+ <br>Multics stands for MULTIplexed Information and Computing Service. It was initially started as a time sharing OS. <br><br>It is when multiple users are allowed to access the same resources of a computer. Basically, multiple users accessing one machine.]]></description><link>Multics.html</link><guid isPermaLink="false">Multics.md</guid><pubDate>Sun, 26 May 2024 12:32:05 GMT</pubDate></item></channel></rss>
